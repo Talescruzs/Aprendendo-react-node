@@ -1,0 +1,35 @@
+body{
+    background-color: rgb(238, 241, 243);
+    text-align: center;
+    height: 100vh;
+}
+.register{
+    margin: auto;
+    margin-top: 5%;
+    height: 80vh;
+    font-size: medium;
+    background-color: rgb(163, 86, 235);
+    width: 50%;
+}
+.register header{
+    background-color: rgb(181, 133, 226);
+    padding: 1px;
+}
+
+.form{
+    font-size: xx-large;
+    text-decoration: solid;
+}
+.field{
+    margin-top: 5%;
+}
+.action{
+    margin-top: 5%;
+    margin-right: 5%;
+    text-align: right;
+}
+button{
+    font-size: x-large;
+    background-color: aqua;
+
+}

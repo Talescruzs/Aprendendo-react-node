@@ -13,7 +13,7 @@ const AppRoutes=()=>{
         <Router>
             <Routes>
                 <Route exact path="/" element={<HomePage/>} />
-                <Route exact path="/entrar" element={<RegisterPage/>} />
+                <Route exact path="/registrar" element={<RegisterPage/>} />
             </Routes>
         </Router>
     )
