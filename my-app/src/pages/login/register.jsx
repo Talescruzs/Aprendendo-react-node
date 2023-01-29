@@ -1,18 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AuthContext } from '../../contexts/auth'
 import './login.css'
 
 const RegisterPage=()=>{
-    const [insertName, setName] = useState("");
-    const [insertPassword, setPassword] = useState("");
+    const { authenticated, login } = useContext(AuthContext)
+
+    const [insertName, setName] = useState("")
+    const [insertPassword, setPassword] = useState("")
     const handleSubmit=(ev)=>{
-        ev.preventDefault();
+        ev.preventDefault()
         console.log("a", { insertName, insertPassword})
+        login(insertName, insertPassword)
     }
+
     return (
         <div className='register'>       
             <header>
                 <h1>Adicionando registro</h1>
             </header>
+            <p>{String(authenticated)}</p>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='field'>
                     <label htmlFor='name'>Nome:</label>
