@@ -1,4 +1,4 @@
-import React, { createContext, useState }  from "react"
+import React, { createContext, useState, useEffect }  from "react"
 import { useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext()
@@ -6,15 +6,30 @@ export const AuthContext = createContext()
 export const AuthProvider=({ children })=>{
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
-    const login=(name, password)=>{
-        console.log("login", name, password)
+    useEffect(() =>{
+        const recoveredUser = localStorage.getItem("user")
 
-        if(password === "senha"){
-            setUser({ id:"123", name })
-            navigate("/")
+        if(recoveredUser){
+            setUser(JSON.parse(recoveredUser))
         }
 
+        setLoading(false)
+    }, [])
+    
+    const login=(name, password)=>{
+        console.log("login", name, password)
+        const loggedUser = {
+            id : "123",
+            name
+        }
+        localStorage.setItem("user", JSON.stringify(loggedUser))
+
+        if(password === "senha"){
+            setUser(loggedUser)
+            navigate("/")
+        }
     }
     const logout=()=>{
         console.log("logout")
@@ -24,7 +39,7 @@ export const AuthProvider=({ children })=>{
 
     return(
         <AuthContext.Provider value={{ authenticated: 
-            !!user, user, login, logout }}>
+            !!user, user, loading, login, logout }}>
                 { children }
         </AuthContext.Provider>
     )
