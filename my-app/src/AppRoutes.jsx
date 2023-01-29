@@ -14,9 +14,11 @@ import { AuthProvider } from "./contexts/auth"
 import RegisterPage from "./pages/login/register"
 import AlunoPage from "./pages/aluno/alunoPage"
 import ProfPage from "./pages/professor/profPage"
+import Turmas from "./pages/professor/turmas"
+import Horarios from "./pages/professor/horarios"
+import Config from "./pages/professor/config"
 
 const AppRoutes=()=>{
-
     return(
         <Router>
             <AuthProvider>
@@ -30,13 +32,36 @@ const AppRoutes=()=>{
                             </PrivAluno>
                         </Private>} 
                     />
-                    <Route exact path="/professor" element={
-                        <Private>
-                            <PrivProf>
-                                <ProfPage/>
-                            </PrivProf>
-                        </Private>} 
-                    />
+                    <Route path="/professor">
+                        <Route index element={
+                            <Private>
+                                <PrivProf>
+                                    <ProfPage/>
+                                </PrivProf>
+                            </Private>
+                        }/>
+                        <Route path="turmas" element={
+                            <Private>
+                                <PrivProf>
+                                    <Turmas/>
+                                </PrivProf>
+                            </Private>
+                        }/>
+                        <Route path="horarios" element={
+                            <Private>
+                                <PrivProf>
+                                    <Horarios/>
+                                </PrivProf>
+                            </Private>
+                        }/>
+                        <Route path="configuracoes" element={
+                            <Private>
+                                <PrivProf>
+                                    <Config/>
+                                </PrivProf>
+                            </Private>
+                        }/>
+                    </Route>
                 </Routes>
             </AuthProvider>
         </Router>

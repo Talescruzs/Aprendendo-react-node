@@ -30,9 +30,9 @@ const RegisterPage=()=>{
                     <input type='password' name='password' id='password' value={insertPassword} onChange={(ev) => setPassword(ev.target.value)}/>
                 </div>
                 <div className='field'>
-                    <label for="Professor">Professor</label>
+                    <label htmlFor="Professor">Professor</label>
                     <input type="radio" id="Professor" value="Professor" onChange={(ev) => setType(ev.target.value)}/>
-                    <label for="Arquiteto">Aluno</label>
+                    <label htmlFor="Arquiteto">Aluno</label>
                     <input type="radio" id="Aluno" value="Aluno" onChange={(ev) => setType(ev.target.value)}/>
                 </div>
                 <div className='action'>

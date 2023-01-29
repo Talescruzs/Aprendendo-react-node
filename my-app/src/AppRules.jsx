@@ -1,7 +1,7 @@
 // Arquivo das regras de negócio e limitações de navegações criadas
 
 import React, { useContext } from 'react'
-import{ Navigate } from "react-router-dom"
+import{ Navigate, Outlet } from "react-router-dom"
 import { AuthContext } from "./contexts/auth"
 
 export const Private=({ children })=>{
@@ -19,6 +19,7 @@ export const Private=({ children })=>{
     }
     return children
 }
+
 export const RedirectType=()=>{
     const {user} = useContext(AuthContext)
     if(user.type==="Aluno"){
@@ -32,6 +33,7 @@ export const RedirectType=()=>{
         )
     }
 }
+
 export const PrivAluno=({ children })=>{
     const {user} = useContext(AuthContext)
     if(user.type==="Professor"){
@@ -41,6 +43,7 @@ export const PrivAluno=({ children })=>{
     }
     return children
 }
+
 export const PrivProf=({ children })=>{
     const {user} = useContext(AuthContext)
     if(user.type==="Aluno"){
