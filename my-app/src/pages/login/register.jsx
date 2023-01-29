@@ -7,10 +7,11 @@ const RegisterPage=()=>{
 
     const [insertName, setName] = useState("")
     const [insertPassword, setPassword] = useState("")
+    const [insertType, setType] = useState("")
     const handleSubmit=(ev)=>{
         ev.preventDefault()
-        console.log("a", { insertName, insertPassword})
-        login(insertName, insertPassword)
+        console.log("a", { insertName, insertPassword, insertType })
+        login(insertName, insertPassword, insertType)
     }
 
     return (
@@ -27,6 +28,12 @@ const RegisterPage=()=>{
                 <div className='field'>
                     <label htmlFor='password'>Senha:</label>
                     <input type='password' name='password' id='password' value={insertPassword} onChange={(ev) => setPassword(ev.target.value)}/>
+                </div>
+                <div className='field'>
+                    <label for="Professor">Professor</label>
+                    <input type="radio" id="Professor" value="Professor" onChange={(ev) => setType(ev.target.value)}/>
+                    <label for="Arquiteto">Aluno</label>
+                    <input type="radio" id="Aluno" value="Aluno" onChange={(ev) => setType(ev.target.value)}/>
                 </div>
                 <div className='action'>
                     <button type='submit'>Registrar</button>

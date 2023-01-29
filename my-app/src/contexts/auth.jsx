@@ -18,11 +18,12 @@ export const AuthProvider=({ children })=>{
         setLoading(false)
     }, [])
     
-    const login=(name, password)=>{
-        console.log("login", name, password)
+    const login=(name, password, type)=>{
+        console.log("login", name, password, type)
         const loggedUser = {
             id : "123",
-            name
+            name,
+            type
         }
         localStorage.setItem("user", JSON.stringify(loggedUser))
 
