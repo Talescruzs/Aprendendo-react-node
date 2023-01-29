@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import{ Navigate, Outlet } from "react-router-dom"
 import { AuthContext } from "./contexts/auth"
 
-export const Private=({ children })=>{
+export const Private=()=>{
     const { authenticated, loading } = useContext(AuthContext)
     if(loading){
         return(
@@ -17,7 +17,7 @@ export const Private=({ children })=>{
             <Navigate to="/registrar"/>
         )
     }
-    return children
+    return <Outlet/>
 }
 
 export const RedirectType=()=>{
@@ -34,22 +34,22 @@ export const RedirectType=()=>{
     }
 }
 
-export const PrivAluno=({ children })=>{
+export const PrivAluno=()=>{
     const {user} = useContext(AuthContext)
     if(user.type==="Professor"){
         return(
             <Navigate to="/professor"/>
         )
     }
-    return children
+    return <Outlet/>
 }
 
-export const PrivProf=({ children })=>{
+export const PrivProf=()=>{
     const {user} = useContext(AuthContext)
     if(user.type==="Aluno"){
         return(
             <Navigate to="/aluno"/>
         )
     }
-    return children
+    return <Outlet/>
 }

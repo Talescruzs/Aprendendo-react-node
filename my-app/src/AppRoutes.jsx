@@ -23,44 +23,35 @@ const AppRoutes=()=>{
         <Router>
             <AuthProvider>
                 <Routes>
-                    <Route exact path="/" element={<Private><RedirectType/></Private>} />
                     <Route exact path="/registrar" element={<RegisterPage/>} />
-                    <Route exact path="/aluno" element={
-                        <Private>
-                            <PrivAluno>
-                                <AlunoPage/>
-                            </PrivAluno>
-                        </Private>} 
-                    />
-                    <Route path="/professor">
-                        <Route index element={
-                            <Private>
-                                <PrivProf>
+
+                    <Route element={<Private/>}>
+                        <Route exact path="/" element={<RedirectType/>}/>
+
+                        <Route element={<PrivProf/>}>
+                            <Route path="professor">
+                                <Route index element={
                                     <ProfPage/>
-                                </PrivProf>
-                            </Private>
-                        }/>
-                        <Route path="turmas" element={
-                            <Private>
-                                <PrivProf>
+                                }/>
+                                <Route path="turmas" element={
                                     <Turmas/>
-                                </PrivProf>
-                            </Private>
-                        }/>
-                        <Route path="horarios" element={
-                            <Private>
-                                <PrivProf>
+                                }/>
+                                <Route path="horarios" element={
                                     <Horarios/>
-                                </PrivProf>
-                            </Private>
-                        }/>
-                        <Route path="configuracoes" element={
-                            <Private>
-                                <PrivProf>
+                                }/>
+                                <Route path="configuracoes" element={
                                     <Config/>
-                                </PrivProf>
-                            </Private>
-                        }/>
+                                }/>
+                            </Route>
+                        </Route>
+
+                        <Route element={<PrivAluno/>}>
+                            <Route path="aluno">
+                                <Route index element={
+                                    <AlunoPage/>
+                                }/>
+                            </Route>
+                        </Route>
                     </Route>
                 </Routes>
             </AuthProvider>
