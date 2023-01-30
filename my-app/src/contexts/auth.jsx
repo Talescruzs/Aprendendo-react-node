@@ -35,7 +35,8 @@ export const AuthProvider=({ children })=>{
     const logout=()=>{
         console.log("logout")
         setUser(null)
-        navigate("/registrar")
+        localStorage.removeItem("user")
+        navigate("/login")
     }
 
     return(

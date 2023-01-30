@@ -4,14 +4,17 @@ import {  useNavigate } from "react-router-dom"
 
 
 const ProfPage=()=>{
-    const { user } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const { user, logout } = useContext(AuthContext)
+    const handleLogout =()=>{
+        logout()
+    }
 
     return(
         <div className='body'>       
             <header>
                 <h1>Painel do Professor</h1>
                 <p>nome: {user.name}</p>
+                <button onClick={handleLogout}>Sair</button>
             </header>
             <div className="base">
                 <div>
